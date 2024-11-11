@@ -16,32 +16,60 @@ class AuthCubit extends Cubit<AuthState> {
   String? emailAddress;
   String? password;
   GlobalKey<FormState> signupFormKey = GlobalKey();
+  GlobalKey<FormState> loginFormKey = GlobalKey();
   bool? termsAndConditionsIsDone;
 
   signupWithEmailAndPassword() async {
     try {
-      emit(AuthLoadingState());
+      emit(SignUpLoadingState());
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailAddress!,
         password: password!,
       );
-      emit(AuthSuccessState());
+      verifyEmail();
+      emit(SignUpSuccessState());
     } on FirebaseAuthException catch (e) {
       log(e.code.toString());
       if (e.code == 'weak-password') {
-        emit(
-            AuthFailureState(errMessage: 'The password provided is too weak.'));
+        emit(SignUpFailureState(
+            errMessage: 'The password provided is too weak.'));
       } else if (e.code == 'email-already-in-use') {
-        emit(AuthFailureState(
+        emit(SignUpFailureState(
             errMessage: 'The account already exists for that email.'));
       }
     } catch (e) {
-      emit(AuthFailureState(errMessage: e.toString()));
+      emit(SignUpFailureState(errMessage: e.toString()));
     }
   }
 
   changeTermsAndConditionsState({required bool isDone}) {
     termsAndConditionsIsDone = isDone;
     emit(ChangeTermsAndConditionsState());
+  }
+
+  signInWithEmailAndPassword() async {
+    try {
+      emit(SignInLoadingState());
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailAddress!,
+        password: password!,
+      );
+      emit(SignInSuccessState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SignInFailureState(errMessage: 'No user found for that email.'));
+      } else if (e.code == 'wrong-password') {
+        emit(SignInFailureState(
+            errMessage: 'Wrong password provided for that user.'));
+      } else {
+        emit(SignInFailureState(errMessage: 'Check Your Email and Password !'));
+      }
+    } catch (e) {
+      emit(SignInFailureState(errMessage: e.toString()));
+    }
+  }
+
+  verifyEmail() async {
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
   }
 }

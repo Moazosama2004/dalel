@@ -49,4 +49,19 @@ abstract class AppStyles {
     fontSize: 28,
     fontWeight: FontWeight.w600,
   );
+  static final poppins24SemiBold = TextStyle(
+    color: AppColors.deepBrown,
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+  );
+  static final poppins12SemiBold = TextStyle(
+    color: AppColors.deepBrown,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+  );
+  static final saira32Bold = TextStyle(
+    color: AppColors.deepBrown,
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+  );
 }
