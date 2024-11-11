@@ -23,7 +23,7 @@ class LoginForm extends StatelessWidget {
           // customToastMessage(
           //     message: 'login Successifully', color: Colors.white);
           FirebaseAuth.instance.currentUser!.emailVerified
-              ? customPushReplacement(context, '/homeView')
+              ? customPushReplacement(context, "/navbarView")
               : customToastMessage(
                   message: 'Please Verify Your Account',
                   color: Colors.blueAccent);

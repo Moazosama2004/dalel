@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
       () {
         bool isOnBoardingVisited =  getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
         if(isOnBoardingVisited){
-          FirebaseAuth.instance.currentUser == null ? customPushReplacement(context, "/loginView") : customPushReplacement(context, "/homeView") ;
+          FirebaseAuth.instance.currentUser == null ? customPushReplacement(context, "/loginView") : customPushReplacement(context, "/navbarView") ;
         } else {
           customPushReplacement(context, "/onboardingView");
         }
