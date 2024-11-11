@@ -59,9 +59,14 @@ class LoginForm extends StatelessWidget {
                 ),
                 Align(
                     alignment: Alignment.centerRight,
-                    child: Text(
-                      AppStrings.forgotPassword,
-                      style: AppStyles.poppins12SemiBold,
+                    child: GestureDetector(
+                      onTap: () {
+                        customPushReplacement(context, '/forgotPasswordView');
+                      },
+                      child: Text(
+                        AppStrings.forgotPassword,
+                        style: AppStyles.poppins12SemiBold,
+                      ),
                     )),
                 SizedBox(
                   height: 102,

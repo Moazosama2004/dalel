@@ -22,3 +22,13 @@ final class SignInFailureState extends AuthState {
 }
 
 final class ChangeTermsAndConditionsState extends AuthState {}
+
+final class ForgotPasswordLoadingState extends AuthState {}
+
+final class ForgotPasswordSuccessState extends AuthState {}
+
+final class ForgotPasswordFailureState extends AuthState {
+  final String errMessage;
+
+  ForgotPasswordFailureState({required this.errMessage});
+}
