@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dalel/features/auth/presentation/widgets/terms_and_conditions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,6 +27,7 @@ class AuthCubit extends Cubit<AuthState> {
       );
       emit(AuthSuccessState());
     } on FirebaseAuthException catch (e) {
+      log(e.code.toString());
       if (e.code == 'weak-password') {
         emit(
             AuthFailureState(errMessage: 'The password provided is too weak.'));

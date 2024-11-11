@@ -1,6 +1,8 @@
 import 'package:dalel/core/databases/cache_helper.dart';
 import 'package:dalel/core/theme/app_colors.dart';
 import 'package:dalel/core/theme/app_styles.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
       () {
         bool isOnBoardingVisited =  getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
         if(isOnBoardingVisited){
-          customPushReplacement(context, "/loginView");
+          FirebaseAuth.instance.currentUser == null ? customPushReplacement(context, "/loginView") : customPushReplacement(context, "/homeView") ;
         } else {
           customPushReplacement(context, "/onboardingView");
         }

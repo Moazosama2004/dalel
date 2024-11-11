@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/functions/custom_toast_message.dart';
+import '../../../../core/functions/functions.dart';
 import '../widgets/already_have_an_account.dart';
 import '../widgets/custom_check_box.dart';
 import '../widgets/custom_text_field.dart';
@@ -73,6 +74,7 @@ class SignUpForm extends StatelessWidget {
         if (state is AuthSuccessState) {
           customToastMessage(
               message: 'SignUp is Successifuly', color: Colors.greenAccent);
+              customPushReplacement(context, '/homeView');
         } else if (state is AuthFailureState) {
           customToastMessage(message: state.errMessage, color: Colors.red);
         }
@@ -146,6 +148,7 @@ class SignUpForm extends StatelessWidget {
                           if (authCubit.signupFormKey.currentState!
                               .validate()) {
                             authCubit.signupWithEmailAndPassword();
+                            
                           }
                         }
                       },
