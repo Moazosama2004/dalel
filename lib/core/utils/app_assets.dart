@@ -30,6 +30,14 @@ class Assets {
   /// assets/images/islamic.svg
   static const String imagesIslamic = "assets/images/islamic.svg";
 
+  /// Assets for imagesLionheart
+  /// assets/images/lionheart.png
+  static const String imagesLionheart = "assets/images/lionheart.png";
+
+  /// Assets for imagesMenuIcon
+  /// assets/images/menu_icon.svg
+  static const String imagesMenuIcon = "assets/images/menu_icon.svg";
+
   /// Assets for imagesOnBoarding1
   /// assets/images/onBoarding1.png
   static const String imagesOnBoarding1 = "assets/images/onBoarding1.png";

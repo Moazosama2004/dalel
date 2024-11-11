@@ -4,10 +4,17 @@ import 'app_colors.dart';
 
 abstract class AppStyles {
   static final pacifico64Regular = TextStyle(
-      color: AppColors.deepBrown,
-      fontSize: 64,
-      fontWeight: FontWeight.w400,
-      fontFamily: 'Pacifico');
+    color: AppColors.deepBrown,
+    fontSize: 64,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Pacifico',
+  );
+  static final pacifico22Regular = TextStyle(
+    color: AppColors.deepBrown,
+    fontSize: 22,
+    fontWeight: FontWeight.w400,
+    fontFamily: 'Pacifico',
+  );
 
   static final poppins16Regular = TextStyle(
     color: AppColors.deepBrown,
@@ -24,9 +31,24 @@ abstract class AppStyles {
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
+  static final poppins20Regular = TextStyle(
+    color: AppColors.deepBrown,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+  );
   static final poppins24Medium = TextStyle(
     color: AppColors.deepBrown,
     fontSize: 24,
+    fontWeight: FontWeight.w500,
+  );
+  static final poppins16Medium = TextStyle(
+    color: AppColors.deepBrown,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+  static final poppins14Medium = TextStyle(
+    color: AppColors.deepBrown,
+    fontSize: 14,
     fontWeight: FontWeight.w500,
   );
   static final poppins16Light = TextStyle(
